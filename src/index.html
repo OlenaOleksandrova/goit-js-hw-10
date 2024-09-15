@@ -5,13 +5,67 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
+
+
     <link rel="stylesheet" href="./css/styles.css" />
+    
   </head>
   <body>
+<!-- 
+    <input type="text" id="datetime-picker" />
+    <button type="button" data-start>Start</button>
+    
+    <div class="timer">
+      <div class="field">
+        <span class="value" data-days>00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="field">
+        <span class="value" data-hours>00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="field">
+        <span class="value" data-minutes>00</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="field">
+        <span class="value" data-seconds>00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
    
+  <nav>
+    <ul>
+      <li><a href="./1-timer.html">Timer</a> </li>
+      <li><a href="./2-snackbar.html">Promise</a> </li>
+    </ul>
+  </nav>
 
-   
+  <script src="./1-timer.html"></script>
+  <script src="./2-snackbar.html"></script>
 
-    <script type="module" src="./main.js"></script>
+  <input type="text" id="datetime-picker" placeholder="Select Date and Time">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      flatpickr("#datetime-picker", {
+        enableTime: true,
+        time_24hr: true,
+        defaultDate: new Date(),
+        minuteIncrement: 1,
+        onClose(selectedDates) {
+          console.log(selectedDates[0]);
+        },
+      });
+    });
+  </script> -->
+
+    <nav>
+      <ul>
+        <li><a href="./1-timer.html">Timer</a> </li>
+        <li><a href="./2-snackbar.html">Promise</a> </li>
+      </ul>
+    </nav>
   </body>
 </html>
