@@ -2,16 +2,18 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
 
+
 const startBtn = document.querySelector('button[data-start]');
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
+const datetimePicker = document.getElementById('datetime-picker');
 
 const timer = new Timer({
     onTick: updateClockface,
 })
-let userSelectedDate = null;
+let SelectedDate = null;
 let timerInterval = null;
 
 const options = {
@@ -21,14 +23,18 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     const selectedDate = selectedDates[0];
-    if (selectedDate < new Date()) {
-      iziToast.error({ title: 'Error', message: 'Please choose a date in the future' });
+
+   if (selectedDate < new Date()) {
+      alert('Please choose a date in the future');
       startBtn.disabled = true;
     } else {
-      userSelectedDate = selectedDate;
       startBtn.disabled = false;
     }
   },
 };
 
 flatpickr("#datetime-picker", options);
+
+// зворотній виклик
+
+
