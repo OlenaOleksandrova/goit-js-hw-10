@@ -13,7 +13,7 @@ const datetimePicker = document.getElementById('datetime-picker');
 const timer = new Timer({
     onTick: updateClockface,
 })
-let SelectedDate = null;
+let selectedDate = null;
 let timerInterval = null;
 
 const options = {
@@ -24,7 +24,7 @@ const options = {
   onClose(selectedDates) {
     const selectedDate = selectedDates[0];
 
-   if (selectedDate < new Date()) {
+   if (selectedDate <= new Date()) {
       alert('Please choose a date in the future');
       startBtn.disabled = true;
     } else {
@@ -37,3 +37,18 @@ flatpickr("#datetime-picker", options);
 
 // зворотній виклик
 
+function startCount() {
+  timerInterval = setInterval(() => {
+    const currentTime = new Date();
+    const timeAll = selectedDate - currentTime;
+
+    if (timeAll <= 0) {
+      clearInterval(timerInterva);
+      updateTimer(0);
+      alert('');
+      return;
+    }
+
+    updateTimer(timeAll);
+  }, 1000);
+  }
