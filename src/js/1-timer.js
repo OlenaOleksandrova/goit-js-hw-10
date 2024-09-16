@@ -37,4 +37,3 @@ flatpickr("#datetime-picker", options);
 
 // зворотній виклик
 
-
