@@ -1,22 +1,22 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 
 
 const startBtn = document.querySelector('button[data-start]');
+startBtn.disabled = true;
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 const datetimePicker = document.getElementById('datetime-picker');
 
-// const timer = new Timer({
-//     onTick: updateClockface,
-// })
+
 let selectedDate = null;
 let timerInterval = null;
 
-startBtn.disabled = true;
 
 const options = {
   enableTime: true,
@@ -24,12 +24,15 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
+     selectedDate = selectedDates[0];
 
    if (selectedDate <= new Date()) {
-      alert('Please choose a date in the future');
-      startBtn.disabled = true;
-   } else {
+     iziToast.error({
+       title: "Error",
+       message: "Please choose a date in the future",
+     });
+     startBtn.disabled = true;
+       } else {
       startBtn.disabled = false;
     }
 
@@ -42,14 +45,10 @@ flatpickr("#datetime-picker", options);
 // деактивація кнопки та інпуиу
 
 function startTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-  }
-   startBtn.disabled = true;
-  datetimePicker.disabled = true;
+ startBtn.disabled = true;
+datetimePicker.disabled = true;
 
-   
-
+  
 // зворотній виклик
 
   timerInterval = setInterval(() => {
@@ -59,8 +58,10 @@ function startTimer() {
     if (timeAll <= 0) {
       clearInterval(timerInterval);
       updateTimer(0);
-      resetTimer();
-      // alert('');
+      iziToast.success({
+        title: "Completed",
+        message: "The countdown has finished!",
+      });
       return;
     }
 
@@ -68,10 +69,6 @@ function startTimer() {
   }, 1000);
   };
 
-  function resetTimer() {
-  startBtn.disabled = true;
-  datetimePicker.disabled = false;
-}
 
 // Оновлюємо таймер
 function updateTimer(ms) {
