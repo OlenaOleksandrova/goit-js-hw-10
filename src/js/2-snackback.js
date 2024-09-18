@@ -30,5 +30,28 @@ document.querySelector('.form').addEventListener('submit', function (event) {
           title: '❌ Error',
           message: `Rejected promise in ${delay}ms`,
         });
-      });
+    });
+  
+   if (state === 'caution') {
+    iziToast.warning({
+      title: 'Caution',
+      message: 'You forgot important data',
+    });
+  } else if (state === 'informing') {
+    iziToast.info({
+      title: 'Hello',
+      message: 'Welcome!',
+    });
+  } else if (state === 'message') {
+    iziToast.info({
+      title: 'Hello!',
+      message: 'Do you like it?',
+    });
+  } else if (state === 'options') {
+    iziToast.info({
+      title: 'Hey',
+      message: 'What would you like to add? Photo, Video, Text',
+    });
+  }
+  
 });
