@@ -11,9 +11,9 @@ document.querySelector('.form').addEventListener('submit', function (event) {
     setTimeout(() => {
       if (state === 'fulfilled') {
         resolve(delay);
-      } else {
+      } else if (state === 'rejected') { 
         reject(delay);
-      }
+       }
     }, delay);
   });
 
@@ -32,26 +32,30 @@ document.querySelector('.form').addEventListener('submit', function (event) {
         });
     });
   
-   if (state === 'caution') {
-    iziToast.warning({
-      title: 'Caution',
-      message: 'You forgot important data',
-    });
-  } else if (state === 'informing') {
-    iziToast.info({
-      title: 'Hello',
-      message: 'Welcome!',
-    });
-  } else if (state === 'message') {
-    iziToast.info({
-      title: 'Hello!',
-      message: 'Do you like it?',
-    });
-  } else if (state === 'options') {
-    iziToast.info({
-      title: 'Hey',
-      message: 'What would you like to add? Photo, Video, Text',
-    });
+  if (state === 'caution' || state === 'informing' || state === 'message' || state === 'options') {
+    setTimeout(() => {
+      if (state === 'caution') {
+        iziToast.warning({
+          title: 'Caution',
+          message: 'You forgot important data',
+        });
+      } else if (state === 'informing') {
+        iziToast.info({
+          title: 'Hello',
+          message: 'Welcome!',
+        });
+      } else if (state === 'message') {
+        iziToast.info({
+          title: 'Hello!',
+          message: 'Do you like it?',
+        });
+      } else if (state === 'options') {
+        iziToast.info({
+          title: 'Hey',
+          message: 'What would you like to add?',
+        });
+      }
+    }, delay);
   }
   
 });
