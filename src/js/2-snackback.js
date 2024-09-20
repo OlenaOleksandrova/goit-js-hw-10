@@ -11,9 +11,9 @@ document.querySelector('.form').addEventListener('submit', function (event) {
     setTimeout(() => {
       if (state === 'fulfilled') {
         resolve(delay);
-      } else if (state === 'rejected') { 
+      } else if (state === 'rejected') {
         reject(delay);
-       }
+      }
     }, delay);
   });
 
@@ -26,11 +26,12 @@ document.querySelector('.form').addEventListener('submit', function (event) {
       });
     })
     .catch((delay) => {
-        iziToast.error({
-          title: '❌ Error',
-          message: `Rejected promise in ${delay}ms`,
-        });
+      iziToast.error({
+        title: '❌ Error',
+        message: `Rejected promise in ${delay}ms`,
+      });
     });
+  
   
   if (state === 'caution' || state === 'informing' || state === 'message' || state === 'options') {
     setTimeout(() => {
